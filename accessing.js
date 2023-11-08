@@ -1,7 +1,5 @@
 // Change the text of the "Seattle Weather" header to "February 10 Weather Forecast, Seattle"
 
-//<h2 id="weather-head">Seattle Weather</h2>
-
 const weatherHead = document.getElementById("weather-head");
 
 weatherHead.innerText = "February 10 Weather Forecast, Seattle";
