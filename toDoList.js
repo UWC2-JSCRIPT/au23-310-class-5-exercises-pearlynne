@@ -31,7 +31,7 @@ const addListItem = function (e) {
 	//Create new text node with text
 	let newTask = document.createTextNode(text);
 
-	// how to add delete?
+	// how to add delete button?
 
 	//Append new textnode to List element
 	newLiItem.appendChild(newTask);
@@ -43,5 +43,6 @@ const addListItem = function (e) {
 	input.value = "";
 };
 
-const add = document.querySelector("a.add-item")
-add.addEventListener('click', addListItem)
+// Add eventlistener to add-item class
+const add = document.querySelector("a.add-item");
+add.addEventListener('click', addListItem);
