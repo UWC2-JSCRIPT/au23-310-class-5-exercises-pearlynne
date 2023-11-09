@@ -1,24 +1,24 @@
 // Given the <body> element as variable body,
 // access the <main> node and log to the console.
 const body = document.querySelector('body');
-const main = body.getElementsByTagName('main');
 
-// Get item from main
-const mainItems = main[0];
+const bodyItems = body.children;
+// body.firstElementChild or body.querySelector("main")
 
-console.log(mainItems);
+for (child of body.children){
+	if (child.nodeName.toLowerCase() == "main"){
+		console.log(child);
+	}
+};
 
 
 // Given the <ul> element as variable ul,
 // access <body>  and log to the console.
 const ul = document.querySelector('ul');
 
-// const ulBody = ul.closest("body");
-// console.log(ulBody);
-
 let current = ul;
 while (current.parentNode){
- if (current.parentNode.nodeName.toLowerCase() == 'body'){
+ if (current.parentNode.nodeName.toLowerCase() == "body"){
 	foundIt = current.parentNode.nodeName;
 	console.log(current.parentNode);
 	break;
@@ -26,16 +26,18 @@ while (current.parentNode){
  current = current.parentNode;
 }
 
+// ul.closest("body") works
+
 
 // Given the <p> element as var p,
 // access the 3rd <li>  and log to the console.
 const p = document.querySelector('p');
 
-// List parents of p
-const pParents = p.parentElement;
+// Find previous sibling 
+const pPrevSib = p.previousElementSibling
 
-// Search for li tag
-const li = pParents.getElementsByTagName('li');
-const thirdLi = li[2];
+// Get third child (index of 2)
+const thirdLi = pPrevSib.children[2]
+// pPrevSib.lastElementChild is the 3rd li 
 
 console.log(thirdLi);
