@@ -1,20 +1,29 @@
 // If an li element is clicked, toggle the class "done" on the <li>
 
-let liEl = document.querySelector('li');
+let toDoList = document.querySelector('ul.today-list');
 
-liEl.addEventListener('click', () => {
-	liEl.classList.toggle("done");
-});
+toDoList.addEventListener(('click'), (e) => {
+		if (e.target.nodeName.toLowerCase() == 'li' ) {
+			e.target.classList.toggle('done');
+		};
+
+		// Span needs to be included (find way to include parent)
+		if (e.target.nodeName.toLowerCase() == 'span' ) {
+			e.target.parentNode.classList.toggle('done');
+		};
+	});
+
+// Selecting only list elements will not work for 
+// new items as function was loaded after
 
 
 // If a delete link is clicked, delete the li element / remove from the DOM
-let deleteEl = document.querySelector('a.delete')
 
-deleteEl.addEventListener('click', (e) => {
-	let task = deleteEl.parentElement; 		// might backfire unless it's immediate parent.
-	task.remove();
-	e.stopPropagation();
-});
+toDoList.addEventListener('click', (e) => {
+	if(e.target.className == 'delete' )		
+		e.target.parentElement.remove();
+		// e.stopPropagation();
+	});
 
 
 // If an 'Add' link is clicked, adds the item as a new list item with
@@ -25,24 +34,28 @@ const addListItem = function (e) {
 	const input = this.parentNode.getElementsByTagName('input')[0];
 	const text = input.value; // use this text to create a new <li>
 
-	// Create new element li 				(!! Can we reuse element?)
-	const newLiItem = document.createElement("li");
+	// Create new <li> element
+	const newLiItem = document.createElement('li');
 
-	//Create new text node with text
-	let newTask = document.createTextNode(text);
+	// Create new a.delete element
+	const newAItem = document.createElement('a');
+	newAItem.setAttribute('class', 'delete');
+	newAItem.textContent = 'Delete'; 	// innerHTML prints tags as well
 
-	// how to add delete button?
+	// Create new <span> element with text value.
+	const newSpanItem = document.createElement('span');
+	newSpanItem.textContent = `${text}\n`;
 
-	//Append new textnode to List element
-	newLiItem.appendChild(newTask);
+	// Append <span> and a.delete elements to <li> element
+	newLiItem.append(newSpanItem, newAItem);
 
-	//Append new list element to unordered list
-	document.querySelector("ul.today-list").appendChild(newLiItem);
+	// Append new list element to unordered list
+	toDoList.appendChild(newLiItem);
 
 	// Reset value
-	input.value = "";
+	input.value = '';
 };
 
 // Add eventlistener to add-item class
-const add = document.querySelector("a.add-item");
+const add = document.querySelector('a.add-item');
 add.addEventListener('click', addListItem);
