@@ -15,22 +15,26 @@ paragraph.after(aEl);
 // Access (read) the data-color attribute of the <img>,
 // log to the console
 
-const imgClass= document.querySelector("img")
-imgColor = imgClass.getAttribute('data-color')
+const imgClass= document.querySelector("img");
+imgColor = imgClass.getAttribute('data-color');
 
-console.log(imgColor)
+console.log(imgColor);
+
 
 // Update the third <li> item ("Turbocharged"), 
 // set the class name to "highlight"
 
-const li = document.getElementsByTagName('li')
+const li = document.getElementsByTagName('li');
 
 li[2].setAttribute('class',"highlight");
+
 
 // Remove (delete) the last paragraph
 // (starts with "Available for purchase now…")
 
-const main = document.getElementsByTagName('main')
+const main = document.getElementsByTagName('main');
 
 // Got this from getting path
-main[0].removeChild(paragraph)
+main[0].removeChild(paragraph);
+
+// paragraph.remove() also works
