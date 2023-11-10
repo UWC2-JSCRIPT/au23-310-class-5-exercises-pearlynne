@@ -2,28 +2,15 @@
 // elements.  Should update that element's innerHTML to be the
 // x, y coordinates of the mouse at the time of the click
 
-const td = document.getElementsByTagName("td")
+document.addEventListener("click", (e) => {
 
-let cellIndex = 0
+	// Print coordinates to innerHTML only if td was selected
+	if (e.target.nodeName.toLowerCase() == 'td') {
+		e.target.innerHTML = `${e.clientX}, ${e.clientY}`;
+	};
+});
 
-const clickTable = function (e) {
-	// get mouse coordinates
-	let xCoord = e.clientX;
-	let yCoord = e.clientY;
 
-	// To fix: remove current innerHTML via eventlistener instead
-	td[cellIndex].innerHTML = "";
-
-	// Loop to find which cell was clicked
-	for (i = 0; i < td.length; i++) {
-		// Add to inner HTML to cell
-		if (e.target == td[i]) {
-			let clickedCell = td[i];
-			cellIndex = i;
-			clickedCell.innerHTML = `${xCoord}, ${yCoord}`;
-			break;
-		}
-	}
-}
-
-document.addEventListener("click", clickTable);
+// Adding listener to each td element
+// const td = document.querySelectorAll("td")
+// td.forEach((x) => { cell.addEventListener...
