@@ -1,11 +1,11 @@
-// If an li element is clicked, toggle the class "done" on the <li>
+// If an li element is clicked, toggle the class 'done' on the <li>
 
 let toDoList = document.querySelector('ul.today-list');
 
 toDoList.addEventListener(('click'), (e) => {
 	if (e.target.nodeName.toLowerCase() == 'li') {
 		e.target.classList.toggle('done');
-	}
+	} 
 
 	// Span needs to be included (find way to include parent)
 	if (e.target.nodeName.toLowerCase() == 'span') {
@@ -13,10 +13,10 @@ toDoList.addEventListener(('click'), (e) => {
 	}
 })
 
-// Selecting only list elements will not work for 
-// new items as function was loaded after 
-// unlesss we add event listener in function
-
+/* Note: Selecting only <li> elements will not work 
+ for new list items unlesss we add eventlistener in 
+ addListItem function. Using closest() doesn't stop.
+*/
 
 // If a delete link is clicked, delete the li element / remove from the DOM
 toDoList.addEventListener('click', (e) => {
@@ -70,19 +70,19 @@ add.addEventListener('click', addListItem);
 const createButtons = (function () {
 	// Create new Move Up button
 	const upLink = document.createElement('button');
-	upLink.setAttribute("class", "sortUp");
+	upLink.setAttribute('class', 'sortUp');
 	upLink.textContent = `Move up \n`;
 
 	// Create new Move Down button
 	const downLink = document.createElement('button');
-	downLink.setAttribute("class", 'sortDown');
+	downLink.setAttribute('class', 'sortDown');
 	downLink.textContent = `Move down \n`;
 
 	return { upLink: upLink, downLink: downLink };
 })
 
 
-// Add buttons to current list (to fix: more efficient)
+// Add buttons to current list (to fix for efficiency)
 let liEl = document.querySelectorAll('li');
 liEl.forEach((item) => {
 	let sortButtons = createButtons();
