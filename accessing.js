@@ -8,10 +8,11 @@ weatherHead.innerText = "February 10 Weather Forecast, Seattle";
 
 const sun = document.getElementsByClassName("sun");
 
-for (i = 0; i < sun.length; i++){
+for (i = 0; i < sun.length; i++) {
 	sun[i].style.color = "orange";
 }
 
 // Change the class of the second <li> from to "sun" to "cloudy"
 
-sun[1].className = "cloudy";
+// Resubmission: second <li>
+sun[0].className = "cloudy";
